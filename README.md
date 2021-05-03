@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Practice makes... you better.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here's the [YouTube video](https://www.youtube.com/watch?v=gnkrDse9QKc) I was following, with Ben Awad and Clément Mihailescu.
 
-## Available Scripts
+The goal of this was to get more comfortable making a call to an API, and working with the JSON.
 
-In the project directory, you can run:
+## Still to learn
 
-### `npm start`
+I am really starting to dig into the useEffect dependency array to understand what it's doing and why. It's not good practice to leave it blank, but putting in the dependency also doesn't provide the desired result.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+From reading the comments, people are arguing over useRef and useCallback.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I'm working through [Dan Abramov's article](https://overreacted.io/a-complete-guide-to-useeffect) on this to really understand the inner workings and get a clearer answer.
 
-### `npm test`
+## What I've learnt
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Think about the edge cases.
 
-### `npm run build`
+```
+if (newData === undefined) return;
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+  setUserDataJSON(
+        JSON.stringify(newData, null, 20) || "No user data found"
+      );
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Get more comfortable with destructuring, it helps with brevity.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+const getFullUserName = (userInfo) => {
+   const {
+     name: { first, last },
+   } = userInfo;
+   return `${first} ${last}`;
+ };
+```
 
-### `npm run eject`
+```
+const fetchData = (pageNumber) => {
+    return axios
+      .get(`https://randomuser.me/api?=page${pageNumber}`)
+      .then(({ data }) => {
+        console.log(data);
+        return data;
+      })
+      .catch((err) => console.error(err));
+  };
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- This is the full notation for JSON.stringify to view it more easily.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+JSON.stringify(newData, null, 20)
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **pre** HTML tags are also a much better way of viewing JSON, assuming left text justification.
+- The spread operator is your friend.
+- Take things one step at a time.
