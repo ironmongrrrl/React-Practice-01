@@ -14,7 +14,7 @@ I need to brush up on closures, and I'm also getting a window into useReducer.
 
 ## What I've learnt from this
 
-- Think about the edge cases.
+- **Think about the edge cases.**
 
 ```
 if (newData === undefined) return;
@@ -26,9 +26,9 @@ if (newData === undefined) return;
       );
 ```
 
-- Use the functional updater form of setState, to avoid race conditions.
+- **Use the [functional updater form](https://reactjs.org/docs/hooks-reference.html#functional-updates) of setState, to avoid race conditions.**
 
-E.g. Don't do this:
+e.g. Don't do this:
 
 ```
 setCount(count + 1)
@@ -40,7 +40,7 @@ Do this:
 setCount(prev => prev + 1)
 ```
 
-- Get more comfortable with destructuring, it helps with brevity.
+- **Get more comfortable with destructuring, it helps with brevity.**
 
 ```
 const getFullUserName = (userInfo) => {
@@ -63,12 +63,12 @@ const fetchData = (pageNumber) => {
   };
 ```
 
-- This is the full notation for JSON.stringify to view it more easily.
+- **This is the [full notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) for JSON.stringify to view it more easily.**
 
 ```
 JSON.stringify(newData, null, 20)
 ```
 
-- **pre** HTML tags are also a much better way of viewing JSON, assuming left text justification.
-- The spread operator is your friend.
-- Take things one step at a time.
+- **[pre HTML tags](https://www.w3schools.com/tags/tag_pre.asp) are also a much better way of viewing JSON, assuming left text justification.**
+- **The spread operator is your friend.**
+- **Take things one step at a time.**
