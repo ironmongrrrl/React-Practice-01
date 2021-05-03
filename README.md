@@ -6,13 +6,13 @@ The goal of this was to get more comfortable making a call to an API, and workin
 
 ## Still to learn
 
-I am really starting to dig into the useEffect dependency array to understand what it's doing and why. It's not good practice to leave it blank, but putting in the dependency also doesn't provide the desired result.
+This practice has thrown up questions on the useEffect dependency array. It's not good practice to leave it blank, but putting in the dependency also doesn't provide the desired result. I've had this issue in other projects, so it's interesting to see people in the comments also being confused about it - arguing over useRef and useCallback as solutions.
 
-From reading the comments, people are arguing over useRef and useCallback.
+I'm working through [Dan Abramov's article on useEffect](https://overreacted.io/a-complete-guide-to-useeffect) on this to really get a clear answer.
 
-I'm working through [Dan Abramov's article](https://overreacted.io/a-complete-guide-to-useeffect) on this to really understand the inner workings and get a clearer answer.
+I need to brush up on closures, and I'm also getting a window into useReducer.
 
-## What I've learnt
+## What I've learnt from this
 
 - Think about the edge cases.
 
@@ -24,6 +24,20 @@ if (newData === undefined) return;
   setUserDataJSON(
         JSON.stringify(newData, null, 20) || "No user data found"
       );
+```
+
+- Use the functional updater form of setState, to avoid race conditions.
+
+E.g. Don't do this:
+
+```
+setCount(count + 1)
+```
+
+Do this:
+
+```
+setCount(prev => prev + 1)
 ```
 
 - Get more comfortable with destructuring, it helps with brevity.
